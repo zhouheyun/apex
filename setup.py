@@ -149,7 +149,7 @@ if "--distributed_adam" in sys.argv:
             include_dirs=[os.path.join(this_dir, "csrc")],
             extra_compile_args={
                 "cxx": ["-O3"] + version_dependent_macros,
-                "nvcc": ["-O3", "--use_fast_math"] + version_dependent_macros,
+                "nvcc": ["-O3"] + version_dependent_macros,
             },
         )
     )
@@ -167,7 +167,7 @@ if "--distributed_lamb" in sys.argv:
             include_dirs=[os.path.join(this_dir, "csrc")],
             extra_compile_args={
                 "cxx": ["-O3"] + version_dependent_macros,
-                "nvcc": ["-O3", "--use_fast_math"] + version_dependent_macros,
+                "nvcc": ["-O3"] + version_dependent_macros,
             },
         )
     )
@@ -203,7 +203,7 @@ if "--cuda_ext" in sys.argv:
                     "-lineinfo",
                     "-O3",
                     # '--resource-usage',
-                    "--use_fast_math",
+                    #"--use_fast_math",
                 ] + version_dependent_macros,
             },
         )
@@ -225,7 +225,7 @@ if "--cuda_ext" in sys.argv:
             sources=["csrc/layer_norm_cuda.cpp", "csrc/layer_norm_cuda_kernel.cu"],
             extra_compile_args={
                 "cxx": ["-O3"] + version_dependent_macros,
-                "nvcc": ["-maxrregcount=50", "-O3", "--use_fast_math"] + version_dependent_macros,
+                "nvcc": ["-maxrregcount=50", "-O3"] + version_dependent_macros,
             },
         )
     )
@@ -381,7 +381,7 @@ if "--cuda_ext" in sys.argv:
                         "-U__CUDA_NO_HALF_CONVERSIONS__",
                         "--expt-relaxed-constexpr",
                         "--expt-extended-lambda",
-                        "--use_fast_math",
+                        #"--use_fast_math",
                     ] + version_dependent_macros + cc_flag,
                 },
             )
@@ -457,7 +457,7 @@ if "--focal_loss" in sys.argv:
             include_dirs=[os.path.join(this_dir, 'csrc')],
             extra_compile_args={
                 'cxx': ['-O3'] + version_dependent_macros,
-                'nvcc':['-O3', '--use_fast_math', '--ftz=false'] + version_dependent_macros,
+                'nvcc':['-O3', '--ftz=false'] + version_dependent_macros,
             },
         )
     )
@@ -484,7 +484,7 @@ if "--group_norm" in sys.argv:
             extra_compile_args={
                 "cxx": ["-O3", "-std=c++17"] + version_dependent_macros,
                 "nvcc": [
-                    "-O3", "-std=c++17", "--use_fast_math", "--ftz=false",
+                    "-O3", "-std=c++17", "--ftz=false",
                 ] + arch_flags + version_dependent_macros,
             },
         )
@@ -503,7 +503,7 @@ if "--index_mul_2d" in sys.argv:
             include_dirs=[os.path.join(this_dir, 'csrc')],
             extra_compile_args={
                 'cxx': ['-O3'] + version_dependent_macros,
-                'nvcc':['-O3', '--use_fast_math', '--ftz=false'] + version_dependent_macros,
+                'nvcc':['-O3',  '--ftz=false'] + version_dependent_macros,
             },
         )
     )
@@ -521,7 +521,7 @@ if "--deprecated_fused_adam" in sys.argv:
             include_dirs=[os.path.join(this_dir, "csrc")],
             extra_compile_args={
                 "cxx": ["-O3"] + version_dependent_macros,
-                "nvcc": ["-O3", "--use_fast_math"] + version_dependent_macros,
+                "nvcc": ["-O3"] + version_dependent_macros,
             },
         )
     )
@@ -540,7 +540,7 @@ if "--deprecated_fused_lamb" in sys.argv:
             include_dirs=[os.path.join(this_dir, "csrc")],
             extra_compile_args={
                 "cxx": ["-O3"] + version_dependent_macros,
-                "nvcc": ["-O3", "--use_fast_math"] + version_dependent_macros,
+                "nvcc": ["-O3"] + version_dependent_macros,
             },
         )
     )
@@ -588,7 +588,7 @@ if "--fast_layer_norm" in sys.argv:
                     "-I./apex/contrib/csrc/layer_norm/",
                     "--expt-relaxed-constexpr",
                     "--expt-extended-lambda",
-                    "--use_fast_math",
+                    #"--use_fast_math",
                 ] + version_dependent_macros + generator_flag + cc_flag,
             },
             include_dirs=[os.path.join(this_dir, "apex/contrib/csrc/layer_norm")],
@@ -633,7 +633,7 @@ if "--fmha" in sys.argv:
                     "-U__CUDA_NO_HALF_CONVERSIONS__",
                     "--expt-relaxed-constexpr",
                     "--expt-extended-lambda",
-                    "--use_fast_math",
+                    #"--use_fast_math",
                 ] + version_dependent_macros + generator_flag + cc_flag,
             },
             include_dirs=[
@@ -685,7 +685,7 @@ if "--fast_multihead_attn" in sys.argv:
                     "-U__CUDA_NO_HALF_CONVERSIONS__",
                     "--expt-relaxed-constexpr",
                     "--expt-extended-lambda",
-                    "--use_fast_math",
+                    #"--use_fast_math",
                 ]
                 + version_dependent_macros
                 + generator_flag
